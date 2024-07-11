@@ -1,0 +1,32 @@
+<div>
+  <h1>Employees</h1>
+  <ul>
+    <li *ngFor="let employee of employees">
+      {{ employee.employee_name }} - {{ employee.employee_salary }}
+      <button (click)="getEmployeeById(employee.id)">Edit</button>
+      <button (click)="employeeIdToDelete = employee.id">Delete</button>
+    </li>
+  </ul>
+
+  <form (ngSubmit)="createEmployee()">
+    <h2>Create New Employee</h2>
+    <input [(ngModel)]="newEmployee.employee_name" name="name" placeholder="Name" required>
+    <input [(ngModel)]="newEmployee.employee_salary" name="salary" placeholder="Salary" required>
+    <input [(ngModel)]="newEmployee.employee_age" name="age" placeholder="Age" required>
+    <button type="submit">Create Employee</button>
+  </form>
+
+  <form (ngSubmit)="updateEmployee()">
+    <h2>Update Employee</h2>
+    <input [(ngModel)]="employeeToUpdate.employee_name" name="name" placeholder="Name" required>
+    <input [(ngModel)]="employeeToUpdate.employee_salary" name="salary" placeholder="Salary" required>
+    <input [(ngModel)]="employeeToUpdate.employee_age" name="age" placeholder="Age" required>
+    <button type="submit">Update Employee</button>
+  </form>
+
+  <form (ngSubmit)="deleteEmployee()">
+    <h2>Delete Employee</h2>
+    <input [(ngModel)]="employeeIdToDelete" name="employeeId" placeholder="Employee ID" required>
+    <button type="submit">Delete Employee</button>
+  </form>
+</div>
